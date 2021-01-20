@@ -29,7 +29,7 @@ from rest_auth.registration.views import VerifyEmailView, RegisterView
 
 router = routers.DefaultRouter()
 
-urlpatterns = [
+urlpatterns = [   path("stripe/", include("djstripe.urls", namespace="djstripe")),
                   path('logout', LogoutView.as_view(), name='user-logout'),
                   path('password/change/', PasswordChangeView.as_view(), name='rest_password_change'),
                   path('password/reset', PasswordResetView.as_view(), name='rest_password_reset'),

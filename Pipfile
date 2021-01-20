@@ -32,6 +32,8 @@ PyJWT = "==1.7.1"
 PyMySQL = "==0.10.1"
 python-decouple = "*"
 coreapi = "*"
+dj-stripe = "*"
+stripe = "*"
 
 [dev-packages]
 

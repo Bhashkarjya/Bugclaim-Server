@@ -25,7 +25,7 @@ SECRET_KEY = config('SECRET_KEY',default='f0bsi$rf&-f1y6rf6wp_2+3)kg3+7i#&-3@&@r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool,default=True)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS',default=['localhost','0.0.0.0'])
+ALLOWED_HOSTS = config('ALLOWED_HOSTS',default=['localhost','0.0.0.0','*'])
 
 # Application definition
 
@@ -175,6 +175,6 @@ REST_FRAMEWORK = {'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSc
 STRIPE_LIVE_SECRET_KEY = 'sk_test_51I95BeASHHtyF3trJggBAPAglOlaDRO6jV48P036Xl4sFzvYJfqFljNcvII8MpyKnXmROfrR7PID8HBBkn8k2AHf00uSj14Xuk'
 STRIPE_TEST_SECRET_KEY = 'sk_test_51I95BeASHHtyF3trJggBAPAglOlaDRO6jV48P036Xl4sFzvYJfqFljNcvII8MpyKnXmROfrR7PID8HBBkn8k2AHf00uSj14Xuk'
 STRIPE_LIVE_MODE = False  # Change to True in production
-DJSTRIPE_WEBHOOK_SECRET = "whsec_xxx"  # Get it from the section in the Stripe dashboard where you added the webhook endpoint
+DJSTRIPE_WEBHOOK_SECRET = "whsec_JY6LsORUWKYuJkrIzuTaGGYwlbKUM4tt"  # Get it from the section in the Stripe dashboard where you added the webhook endpoint
 DJSTRIPE_USE_NATIVE_JSONFIELD = True  # We recommend setting to True for new installations
 DJSTRIPE_FOREIGN_KEY_TO_FIELD = "id"  # Set to `"id"` for all new 2.4+ installations

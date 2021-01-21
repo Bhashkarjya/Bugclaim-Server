@@ -8,8 +8,12 @@ from rest_framework.response import Response
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.views import APIView
-import stripe
+from djstripe import webhooks
+from django.contrib.auth import get_user_model
+from djstripe.models import Customer
 
+User = get_user_model()
+import stripe
 stripe.api_key='sk_test_51I95BeASHHtyF3trJggBAPAglOlaDRO6jV48P036Xl4sFzvYJfqFljNcvII8MpyKnXmROfrR7PID8HBBkn8k2AHf00uSj14Xuk'
 
 
@@ -17,25 +21,26 @@ class customers(APIView):
     def get(self,request):
         list =stripe.Customer.list()
         return Response(list,status=status.HTTP_200_OK)
-    def post(self, request, *Args, **kwargs):
-        print(request)
+    def post(self, request, pk):
+        customer =User.objects.get(pk=pk)
+
+        print(pk)
         stripe.Customer.create(
-        name=request.data['name'],
-        email=request.data['email']
+        name=pk,
+        email=customer.email,
         )
         data ='success'
         return Response(data,status=status.HTTP_202_ACCEPTED)
 class subcription(APIView):
-
     def get(self, request):
         data =stripe.Subscription.list()
-        subscription = djstripe.models.Subscription.sync_from_stripe_data(stripe_subscription)
         return Response(data,status=status.HTTP_200_OK)
-    def post(self , request):
+    def post(self , request,pk):
+        customer=Customer.objects.get(name=pk)
         stripe.Subscription.create(
-            customer=request.data.customer_id,
+            customer=customer.id,
             items=[
-            {"price": request.data.price_id},
+            {"price": request.POST['price_id']},
             ],
         )
         data ='success'

@@ -5,7 +5,9 @@ from api.views import CustomLoginView
 urlpatterns = [
     path('login/', CustomLoginView.as_view(), name='my_custom_login'),
     path('customers/', customers.as_view(), name='my_custom_login'),
+    path('customers/<int:pk>', customers.as_view(), name='my_custom_login'),
     path('subcription/', subcription.as_view(), name='my_custom_login'),
+    path('subcription/<int:pk>', subcription.as_view(), name='my_custom_login'),
     path('products/', products.as_view(), name='my_custom_login'),
     path('plans/<str:product_id>', plans.as_view(), name='my_custom_login'),
 ]

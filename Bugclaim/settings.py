@@ -175,6 +175,6 @@ REST_FRAMEWORK = {'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSc
 STRIPE_LIVE_SECRET_KEY = 'sk_test_51I95BeASHHtyF3trJggBAPAglOlaDRO6jV48P036Xl4sFzvYJfqFljNcvII8MpyKnXmROfrR7PID8HBBkn8k2AHf00uSj14Xuk'
 STRIPE_TEST_SECRET_KEY = 'sk_test_51I95BeASHHtyF3trJggBAPAglOlaDRO6jV48P036Xl4sFzvYJfqFljNcvII8MpyKnXmROfrR7PID8HBBkn8k2AHf00uSj14Xuk'
 STRIPE_LIVE_MODE = False  # Change to True in production
-DJSTRIPE_WEBHOOK_SECRET = "whsec_JY6LsORUWKYuJkrIzuTaGGYwlbKUM4tt"  # Get it from the section in the Stripe dashboard where you added the webhook endpoint
+DJSTRIPE_WEBHOOK_SECRET = "whsec_lQtzTsUiTVCOrSLV01k2oibIKk1Klkne"  # Get it from the section in the Stripe dashboard where you added the webhook endpoint
 DJSTRIPE_USE_NATIVE_JSONFIELD = True  # We recommend setting to True for new installations
 DJSTRIPE_FOREIGN_KEY_TO_FIELD = "id"  # Set to `"id"` for all new 2.4+ installations

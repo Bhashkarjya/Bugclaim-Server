@@ -21,9 +21,8 @@ class customers(APIView):
     def get(self,request):
         list =stripe.Customer.list()
         return Response(list,status=status.HTTP_200_OK)
-    def post(self, request, pk):
+    def fetch(self, request, pk):
         customer =User.objects.get(pk=pk)
-
         print(pk)
         stripe.Customer.create(
         name=pk,
@@ -31,6 +30,7 @@ class customers(APIView):
         )
         data ='success'
         return Response(data,status=status.HTTP_202_ACCEPTED)
+    
 class subcription(APIView):
     def get(self, request):
         data =stripe.Subscription.list()
@@ -45,6 +45,16 @@ class subcription(APIView):
         )
         data ='success'
         return Response(data,status=status.HTTP_202_ACCEPTED)
+    def delete(self , request,pk):
+        customer=Customer.objects.get(name=pk)
+        subscriptionlist=stripe.Subscription.list()
+        subscriptionlist=subscriptionlist["data"]
+        subcription=next(x for x in subscriptionlist if x["customer"] == customer.id )
+        print(subcription["id"])
+        stripe.Subscription.delete(subcription["id"])
+        data="success"
+        return Response(data,status=status.HTTP_200_OK)
+
 class products(APIView):
 
     def get(self, request):
